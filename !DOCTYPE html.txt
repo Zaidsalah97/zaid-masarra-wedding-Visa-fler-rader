@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zaid & Masarra</title>
+
+https://fonts.googleapis.com
+https://fonts.gstatic.com
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&familywght@300;400;500;600&display=swap
+
+<style>
+
+:root{
+--white:#ffffff;
+--ivory:#fcf9f5;
+--blush:#f7dfe7;
+--rose:#e5bcc9;
+--sage:#a8ba9d;
+--gold:#c5a05a;
+--text:#433d3a;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--ivory);
+font-family:Montserrat,sans-serif;
+color:var(--text);
+line-height:1.7;
+}
+
+.language-switcher{
+position:fixed;
+top:12px;
+left:50%;
+transform:translateX(-50%);
+z-index:1000;
+
+display:flex;
+gap:6px;
+
+padding:6px;
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(12px);
+border-radius:999px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.language-switcher button{
+border:none;
+background:transparent;
+padding:10px 16px;
+border-radius:999px;
+cursor:pointer;
+font-size:.9rem;
+color:#555;
+}
+
+.language-switcher button.active{
+background:var(--gold);
+color:white;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px;
+background:
+linear-gradient(rgba(252,249,245,.85),rgba(252,249,245,.85)),
+url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000');
+background-size:cover;
+background-position:center;
+}
+
+.hero-box{
+background:rgba(255,255,255,.7);
+padding:60px;
+border-radius:30px;
+max-width:800px;
+backdrop-filter:blur(10px);
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+h1{
+font-family:"Cormorant Garamond",serif;
+font-size:5rem;
+font-weight:600;
+color:var(--gold);
+}
+
+.subtitle{
+font-size:1.2rem;
+margin-top:20px;
+}
+
+.date{
+margin-top:25px;
+font-weight:600;
+letter-spacing:2px;
+}
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:15px 32px;
+background:var(--gold);
+color:white;
+text-decoration:none;
+border-radius:100px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.section{
+max-width:1100px;
+margin:auto;
+padding:90px 25px;
+}
+
+.section-title{
+text-align:center;
+font-family:"Cormorant Garamond",serif;
+font-size:3rem;
+color:var(--gold);
+margin-bottom:50px;
+}
+
+.countdown{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.count-card{
+background:white;
+padding:30px;
+text-align:center;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.count-card span{
+display:block;
+font-size:2rem;
+font-weight:bold;
+color:var(--gold);
+}
+
+.info-card,
+.schedule-card,
+.location-card{
+background:white;
+padding:35px;
+border-radius:25px;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.schedule-list{
+display:grid;
+gap:16px;
+}
+
+.schedule-item{
+display:flex;
+justify-content:space-between;
+padding:15px;
+border-radius:12px;
+background:#fafafa;
+}
+
+.rsvp{
+text-align:center;
+background:white;
+padding:60px;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+footer{
+padding:50px;
+text-align:center;
+background:white;
+margin-top:50px;
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:3rem;
+}
+
+.hero-box{
+padding:35px;
+}
+
+.countdown{
+grid-template-columns:repeat(2,1fr);
+}
+
+.schedule-item{
+flex-direction:column;
+gap:5px;
+}
+
+.language-switcher{
+width:calc(100% - 24px);
+}
+
+.language-switcher button{
+flex:1;
+font-size:.8rem;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="language-switcher">
+<button class="active" onclick="changeLanguage('sv',this)">🇸🇪</button>
+<button onclick="changeLanguage('en',this)">🇬🇧</button>
+<button onclick="changeLanguage('ar',this)">🇸🇦</button>
+</div>
+
+<section class="hero">
+
+<div class="hero-box">
+
+<h1>Zaid & Masarra</h1>
+
+<p class="subtitle" id="heroText">
+har glädjen att bjuda in er att fira vårt bröllop
+</p>
+
+<p class="date" id="dateText">
+25 JUNI 2026
+</p>
+
+#rsvp
+OSA
+</a>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title" id="countTitle">
+Nedräkning
+</h2>
+
+<div class="countdown">
+
+<div class="count-card">
+<span id="days">0</span>
+Dagar
+</div>
+
+<div class="count-card">
+<span id="hours">0</span>
+Timmar
+</div>
+
+<div class="count-card">
+<span id="minutes">0</span>
+Minuter
+</div>
+
+<div class="count-card">
+<span id="seconds">0</span>
+Sekunder
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title" id="detailsTitle">
+Bröllopsinformation
+</h2>
+
+<div class="info-card">
+
+<p><strong>Datum:</strong> 25 juni 2026</p>
+
+<p>
+<strong>Plats:</strong>
+Concerto Event – S:t Jacob festlokal
+</p>
+
+<p>
+Hantverksvägen 4A,
+151 65 Södertälje
+</p>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title" id="scheduleTitle">
+Schema
+</h2>
+
+<div class="schedule-card">
+
+<div class="schedule-list">
+
+<div class="schedule-item">
+<span>19:00</span>
+<span id="s1">Ceremoni</span>
+</div>
+
+<div class="schedule-item">
+<span>20:00</span>
+<span id="s2">Cocktail Hour</span>
+</div>
+
+<div class="schedule-item">
+<span>21:00</span>
+<span id="s3">Fest</span>
+</div>
+
+<div class="schedule-item">
+<span>22:00</span>
+<span id="s4">Middag</span>
+</div>
+
+<div class="schedule-item">
+<span>00:00</span>
+<span id="s5">Bröllopstårta</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title" id="locationTitle">
+Plats
+</h2>
+
+<div class="location-card">
+
+<p>
+Concerto Event – S:t Jacob festlokal
+</p>
+
+<p>
+Hantverksvägen 4A,
+151 65 Södertälje
+</p>
+
+https://maps.google.com/?q=Hantverksvägen+4A+Södertälje
+Öppna karta
+</a>
+
+</div>
+
+</section>
+
+<section class="section" id="rsvp">
+
+<div class="rsvp">
+
+<h2 class="section-title" id="rsvpTitle">
+OSA
+</h2>
+
+<p id="rsvpText">
+Svara senast 1 juni 2026
+</p>
+
+<br>
+
+#
+Bekräfta deltagande
+</a>
+
+<p style="margin-top:20px;font-size:.9rem;color:#777;">
+Byt senare ut länken ovan mot ditt Google Form.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<h3>Zaid & Masarra</h3>
+
+<p>25 juni 2026</p>
+
+</footer>
+
+<script>
+
+const translations = {
+
+sv:{
+hero:"har glädjen att bjuda in er att fira vårt bröllop",
+count:"Nedräkning",
+details:"Bröllopsinformation",
+schedule:"Schema",
+location:"Plats",
+rsvp:"OSA",
+rsvpText:"Svara senast 1 juni 2026",
+rsvpButton:"Bekräfta deltagande",
+s1:"Ceremoni",
+s2:"Cocktail Hour",
+s3:"Fest",
+s4:"Middag",
+s5:"Bröllopstårta"
+},
+
+en:{
+hero:"joyfully invite you to celebrate our wedding",
+count:"Countdown",
+details:"Wedding Information",
+schedule:"Schedule",
+location:"Venue",
+rsvp:"RSVP",
+rsvpText:"Please respond by June 1, 2026",
+rsvpButton:"Confirm Attendance",
+s1:"Ceremony",
+s2:"Cocktail Hour",
+s3:"Party",
+s4:"Dinner",
+s5:"Wedding Cake"
+},
+
+ar:{
+hero:"يسرنا دعوتكم للاحتفال بيوم زفافنا",
+count:"العد التنازلي",
+details:"معلومات الزفاف",
+schedule:"البرنامج",
+location:"الموقع",
+rsvp:"تأكيد الحضور",
+rsvpText:"الرجاء الرد قبل 1 يونيو 2026",
+rsvpButton:"تأكيد الحضور",
+s1:"مراسم الزواج",
+s2:"ساعة الاستقبال",
+s3:"الاحتفال",
+s4:"العشاء",
+s5:"تقطيع الكعكة"
+}
+
+};
+
+function changeLanguage(lang, button){
+
+document.querySelectorAll(".language-switcher button")
+.forEach(btn=>btn.classList.remove("active"));
+
+button.classList.add("active");
+
+document.getElementById("heroText").innerText=translations[lang].hero;
+document.getElementById("countTitle").innerText=translations[lang].count;
+document.getElementById("detailsTitle").innerText=translations[lang].details;
+document.getElementById("scheduleTitle").innerText=translations[lang].schedule;
+document.getElementById("locationTitle").innerText=translations[lang].location;
+document.getElementById("rsvpTitle").innerText=translations[lang].rsvp;
+document.getElementById("rsvpText").innerText=translations[lang].rsvpText;
+document.getElementById("rsvpButton").innerText=translations[lang].rsvpButton;
+
+document.getElementById("s1").innerText=translations[lang].s1;
+document.getElementById("s2").innerText=translations[lang].s2;
+document.getElementById("s3").innerText=translations[lang].s3;
+document.getElementById("s4").innerText=translations[lang].s4;
+document.getElementById("s5").innerText=translations[lang].s5;
+
+if(lang==="ar"){
+document.documentElement.dir="rtl";
+document.documentElement.lang="ar";
+}
+else{
+document.documentElement.dir="ltr";
+document.documentElement.lang=lang;
+}
+}
+
+const targetDate = new Date("June 25, 2026 19:00:00").getTime();
+
+setInterval(function(){
+
+const now = new Date().getTime();
+const distance = targetDate - now;
+
+document.getElementById("days").innerHTML =
+Math.floor(distance/(1000*60*60*24));
+
+document.getElementById("hours").innerHTML =
+Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+
+document.getElementById("minutes").innerHTML =
+Math.floor((distance%(1000*60*60))/(1000*60));
+
+document.getElementById("seconds").innerHTML =
+Math.floor((distance%(1000*60))/1000);
+
+},1000);
+
+</script>
+
+</body>
+</html>
